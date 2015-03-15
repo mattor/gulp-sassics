@@ -1,32 +1,39 @@
 'use strict';
-
 var through = require('through2');
 var path = require('path');
 
-module.exports = function(search) {
-	var doSassics = function(file, enc, callback) {
-		if (file.isNull() || file.isStream()) {
-			return callback(null, file);
+module.exports = function (search) {
+	search = search || 'ff0000';
+
+	return through.obj(function (file, enc, callback) {
+		if (file.isNull()) {
+			callback(null, file);
+			return;
 		}
 
-		function doSassics() {
-			if (file.isBuffer()) {
-				var encoded = String(file.contents);
-				encoded = encodeURIComponent(encoded);
-				encoded = encoded.replace(search, '#{$color}');
-				var name = path.basename(file.path).slice(0, -4);
+		if (file.isStream()) {
+			callback(new gutil.PluginError('gulp-sassics', 'Streaming not supported'));
+			return;
+		}
 
-				encoded = '@function ' + name + '-icon($color: $base-shape-color) {\n\t@return "data:image/svg+xml,' + encoded + '";\n}\n';
+		try {
+			var name = path.basename(file.path).slice(0, -4);
+			var outStr = String(file.contents);
+			outStr = encodeURIComponent(outStr);
+			outStr = outStr.replace(new RegExp(search, 'g'), '#{$color}');
+			outStr = '@function ' + name + '-icon($color: $base-icon-color) {\n\t@return "data:image/svg+xml,' + outStr + '";\n}\n';
 
-				file.contents = new Buffer(encoded);
-				return callback(null, file);
-			}
+			file.contents = new Buffer(outStr);
 
 			callback(null, file);
+			return;
+		}
+		catch (err) {
+			this.emit('error', new gutil.PluginError('gulp-sassics', err, {
+				fileName: file.path
+			}));
 		}
 
-		doSassics();
-	};
-
-	return through.obj(doSassics);
+		callback(null, file);
+	});
 };
