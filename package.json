@@ -1,24 +1,24 @@
 {
-  "name": "gulp-sassics",
-  "description": "Embed SVG files into SASS",
-  "version": "1.0.0",
-  "homepage": "https://github.com/mattor/gulp-sassics",
-  "author": {
-    "name": "Torbjørn Mathisen"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mattor/gulp-sassics"
-  },
-  "bugs": {
-    "url": "https://github.com/mattor/gulp-sassics/issues"
-  },
-  "main": "gulp-sassics.js",
-  "dependencies": {
-    "path": "^0.11.14",
-    "through2": "^0.6.3"
-  },
-  "devDependencies": {},
-  "scripts": {},
-  "license": "MIT"
+    "name": "gulp-sassics",
+    "description": "Embed SVG files into SASS/SCSS files",
+    "version": "1.1.0",
+    "license": "MIT",
+    "homepage": "https://github.com/mattor/gulp-sassics",
+    "author": {
+        "name": "Torbjørn Mathisen <herrmathisen@gmail.com>"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/mattor/gulp-sassics"
+    },
+    "bugs": {
+        "url": "https://github.com/mattor/gulp-sassics/issues"
+    },
+    "main": "index.js",
+    "scripts": {},
+    "dependencies": {
+        "path": "^0.12.7",
+        "plugin-error": "^1.0.1",
+        "through2": "^3.0.1"
+    }
 }
