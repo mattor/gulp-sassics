@@ -1,12 +1,10 @@
 {
     "name": "gulp-sassics",
-    "description": "Embed SVG files into SASS/SCSS files",
+    "description": "Embed SVG files into colorizable SASS-functions",
     "version": "1.1.0",
     "license": "MIT",
-    "homepage": "https://github.com/mattor/gulp-sassics",
-    "author": {
-        "name": "Torbjørn Mathisen <herrmathisen@gmail.com>"
-    },
+    "author": "Torbjørn Mathisen <herrmathisen@gmail.com>",
+    "homepage": "https://github.com/mattor/gulp-sassics#readme",
     "repository": {
         "type": "git",
         "url": "git://github.com/mattor/gulp-sassics"
