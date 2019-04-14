@@ -1,4 +1,4 @@
-# gulp-sassics
+# gulp-sassics [![NPM version](https://img.shields.io/npm/v/gulp-sassics.svg?style=flat)](https://www.npmjs.com/package/gulp-sassics)
 
 > A gulp-plugin to embed SVG files into colorizable SASS-functions
 
