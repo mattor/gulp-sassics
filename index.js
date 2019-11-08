@@ -26,7 +26,7 @@ module.exports = function (search) {
             outStr = outStr.replace(new RegExp(search, 'g'), '#{$color}');
             outStr = '@function ' + name + '-icon($color: $base-icon-color) {\n\t@return "data:image/svg+xml,' + outStr + '";\n}\n';
 
-            file.contents = new Buffer(outStr);
+            file.contents = new Buffer.from(outStr);
 
             callback(null, file);
             return;
